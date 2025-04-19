@@ -1,1 +1,0 @@
-require("clangd-cc").setup({})
