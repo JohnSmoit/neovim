@@ -8,7 +8,7 @@ end)
 
 vim.keymap.set("v", "<leader>fv", function()
     local text = v.selected_text()
-    print(text)
-    print("HELOOOOOOOOOOOOOOOOOOOOO")
     builtin.grep_string({search = text})
 end)
+
+vim.keymap.set("n", "<leader>fg", ":Telescope live_grep<CR>")
