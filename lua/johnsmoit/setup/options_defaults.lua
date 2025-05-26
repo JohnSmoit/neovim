@@ -1,11 +1,14 @@
 
 -- this file contains default values window options such as line numbers and such
 vim.wo.number = true
+vim.wo.relativenumber = true
+
 vim.cmd.set('tabstop=4')
 vim.cmd.set('shiftwidth=4')
 
 vim.cmd.set('expandtab')
 
+vim.opt.termguicolors = true
 
 vim.lsp.inlay_hint.enable(true);
 
