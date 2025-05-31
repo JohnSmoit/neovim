@@ -1,6 +1,5 @@
-
+-- leader key (Yes I'm a space user)
 vim.g.mapleader = ' '
-vim.keymap.set('n', '<leader>pv', vim.cmd.Ex)
 
 -- the essentials:
 vim.keymap.set('n', '<C-s>', vim.cmd.w)
@@ -14,6 +13,11 @@ vim.keymap.set('n', '<leader>tlr', function()
 	wo.relativenumber = not wo.relativenumber
 end)
 
+-- file explorer preview
+vim.keymap.set('n', '<leader>pv', vim.cmd.Oil)
+
+-- TODO: Move all lsp stuff into their respective LSP configurations
+-- Planning on dropping lspzero and lspconfig and using the base provider since it seems better now
 -- lsp stuff
 vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 vim.keymap.set('n', '<leader>sad', function()
