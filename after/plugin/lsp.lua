@@ -2,7 +2,8 @@ require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
         'clangd',
-        'lua_ls'
+        'lua_ls',
+        'zls'
     },
 }
 
@@ -23,6 +24,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
         --     client.server_capabilities.completionProvider.triggerCharacters = chars
         --     vim.lsp.completion.enable(true, client.id, args.buf)
         -- end
+
+        if client:supports_method("textDocument/formatting") then
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                group = vim.api.nvim_create_augroup("my.lsp", {clear = false}),
+                buffer = args.buf,
+                callback = function()
+                    vim.lsp.buf.format({bufnr = args.buf, id = client.id, timeout_ms = 1500})
+                end
+            })
+        end
+
+        -- other keymaps
+        vim.keymap.set("n", "<leader>gd", function()
+            vim.lsp.buf.definition({reuse_win = true, loclist=true})
+        end)
+
+
     end
 })
 
@@ -36,13 +54,6 @@ cmp.setup({
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
-    mapping = cmp.mapping.preset.insert({
-        ['C-a'] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            end
-        end, {"i", "s"}),
-    })
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -54,7 +65,7 @@ vim.lsp.config("*", {
             semanticTokens = {
                 multilineTokenSupport = true,
             }
-        }
+        },
     }),
     root_markers = { ".git" },
 })
