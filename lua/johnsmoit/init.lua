@@ -9,6 +9,7 @@ jconf.commands = require('johnsmoit.commands')
 jconf.autoClose = require('johnsmoit.autoClose')
 jconf.windowing = require('johnsmoit.windowing')
 jconf.format_utils = require("johnsmoit.format_utils")
+jconf.lsp = require("johnsmoit.lumpy_space_princess")
 
 require("johnsmoit.setup")
 
