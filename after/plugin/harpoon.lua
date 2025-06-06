@@ -23,8 +23,10 @@ vim.keymap.set("n", "<leader>mf", function()
     harpoon:list():add()
 end)
 
-vim.keymap.set("n", "<C-B>l", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<C-B>n", function() harpoon:list():next() end)
+vim.keymap.set("n", "<C-B>l", function() harpoon:list():prev() end,
+    { desc = "Cycle to previous marked file" })
+vim.keymap.set("n", "<C-B>n", function() harpoon:list():next() end,
+    { desc = "Cycle to next marked file" })
 
 
 -- telescope integration
@@ -33,8 +35,9 @@ local conf = require("telescope.config").values
 local function toggle_telescope(harpoon_files)
     local file_paths = {}
     for _, item in ipairs(harpoon_files.items) do
-        table.insert(file_paths, item)
+        table.insert(file_paths, item.value)
     end
+
 
     require("telescope.pickers").new({}, {
         prompt_title = "Harpoon Files",
