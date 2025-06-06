@@ -27,33 +27,44 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         if client:supports_method("textDocument/formatting") then
             vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("my.lsp", {clear = false}),
+                group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
                 buffer = args.buf,
                 callback = function()
-                    vim.lsp.buf.format({bufnr = args.buf, id = client.id, timeout_ms = 1500})
+                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1500 })
                 end
             })
         end
 
         -- other keymaps
         vim.keymap.set("n", "<leader>gd", function()
-            vim.lsp.buf.definition({reuse_win = true, loclist=true})
+            vim.lsp.buf.definition({ reuse_win = true, loclist = true })
         end)
-
-
     end
 })
 
 local cmp = require("cmp")
 -- code completion stuff [WIP]
 cmp.setup({
+    snippet = {
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body)
+        end
+    },
     sources = {
         { name = "nvim_lsp" },
+        { name = "luasnip" },
     },
     window = {
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
     },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    }),
 })
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
