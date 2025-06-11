@@ -42,6 +42,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 })
 
+vim.keymap.set("n", "<leader>rn", function()
+    vim.lsp.buf.rename()
+end)
+
 local cmp = require("cmp")
 -- code completion stuff [WIP]
 cmp.setup({
