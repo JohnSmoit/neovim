@@ -26,13 +26,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- end
 
         if client:supports_method("textDocument/formatting") then
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
-                buffer = args.buf,
-                callback = function()
-                    vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1500 })
-                end
-            })
+            -- vim.api.nvim_create_autocmd("BufWritePre", {
+            --     group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
+            --     buffer = args.buf,
+            --     callback = function()
+            --         vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1500 })
+            --     end
+            -- })
         end
 
         -- other keymaps
@@ -44,6 +44,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.keymap.set("n", "<leader>rn", function()
     vim.lsp.buf.rename()
+end)
+
+
+vim.keymap.set("n", "<leader>df", function()
+    vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() });
 end)
 
 local cmp = require("cmp")
