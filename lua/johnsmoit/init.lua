@@ -6,7 +6,10 @@ local jconf = {
 
 jconf.remaps = require("johnsmoit.remap")
 jconf.commands = require('johnsmoit.commands')
-jconf.autoClose = require('johnsmoit.autoClose')
+
+-- no more janky ass custom autoclose...
+-- jconf.autoClose = require('johnsmoit.autoClose')
+
 jconf.windowing = require('johnsmoit.windowing')
 jconf.format_utils = require("johnsmoit.format_utils")
 

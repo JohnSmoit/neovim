@@ -51,6 +51,16 @@ vim.keymap.set("n", "<leader>df", function()
     vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() });
 end)
 
+vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
+vim.keymap.set('n', '<leader>sad', function()
+    vim.diagnostic.open_float({
+        header = "Oopsies Detected"
+    })
+end)
+
+-- c/c++
+vim.keymap.set('n', '<leader>sh', ':ClangdSwitchSourceHeader<CR>')
+
 local cmp = require("cmp")
 -- code completion stuff [WIP]
 cmp.setup({
@@ -93,4 +103,5 @@ vim.lsp.config("*", {
 
 -- specific configurations for language servers
 
-vim.lsp.enable('lua_ls')
+vim.lsp.enable("lua_ls")
+vim.lsp.enable("clangd")
