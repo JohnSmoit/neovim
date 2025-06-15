@@ -59,7 +59,7 @@ vim.keymap.set('n', '<leader>sad', function()
 end)
 
 -- c/c++
-vim.keymap.set('n', '<leader>sh', ':ClangdSwitchSourceHeader<CR>')
+vim.keymap.set('n', '<leader>sh', ':LspClangdSwitchSourceHeader<CR>')
 
 local cmp = require("cmp")
 -- code completion stuff [WIP]
