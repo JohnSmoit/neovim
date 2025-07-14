@@ -30,14 +30,19 @@ vim.keymap.set("n", "<leader>df", function()
 end)
 
 vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
+
+-- expand diagnostic detail
 vim.keymap.set('n', '<leader>sd', function()
     vim.diagnostic.open_float({
         header = "Oopsies Detected"
     })
 end)
 
-vim.keymap.set('n', '<leader>sad', ':Telescope diagnostics bufnr=0<CR>')
+-- show diagnostics for current file
+vim.keymap.set('n', '<leader>sfd', ':Telescope diagnostics bufnr=0<CR>')
 
+-- show diagnostics for entire workspace
+vim.keymap.set('n', '<leader>sad', ':Telescope diagnostics<CR>');
 -- c/c++
 vim.keymap.set('n', '<leader>sh', ':LspClangdSwitchSourceHeader<CR>')
 
