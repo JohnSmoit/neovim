@@ -1,9 +1,16 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
-        'clangd',
-        'lua_ls',
-        'zls'
+        "hls",
+        "astro",
+        "lemminx",
+        "fsautocomplete",
+        "lua_ls",
+        "ols",
+        "clangd",
+        "zls",
+        "glsl_analyzer",
+        "rust_analyzer",
     },
 }
 
@@ -52,7 +59,10 @@ vim.keymap.set("n", "<leader>df", function()
 end)
 
 vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
-vim.keymap.set('n', '<leader>sad', function()
+
+vim.keymap.set('n', '<leader>sad', ':Telescope diagnostics<CR>')
+vim.keymap.set('n', '<leader>ssd', ':Telescope diagnostics bufnr=0<CR>')
+vim.keymap.set('n', '<leader>sd', function()
     vim.diagnostic.open_float({
         header = "Oopsies Detected"
     })
@@ -103,5 +113,13 @@ vim.lsp.config("*", {
 
 -- specific configurations for language servers
 
+vim.lsp.enable("fsautocomplete")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("ols")
 vim.lsp.enable("clangd")
+vim.lsp.enable("zls")
+vim.lsp.enable("glsl_analyzer")
+vim.lsp.enable("lemminx")
+vim.lsp.enable("astro")
+vim.lsp.enable("hls")
+vim.lsp.enable("rust_analyzer")
