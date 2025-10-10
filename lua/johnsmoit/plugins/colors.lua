@@ -21,5 +21,12 @@ return {
         priority = 1000,
         opts = {},
         config = doLiterallyNothing
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        name = "nightfox",
+        opts = {},
+        config = doLiterallyNothing,
     }
 }

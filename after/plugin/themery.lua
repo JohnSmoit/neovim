@@ -32,6 +32,21 @@ require("themery").setup({
     {
         name = "Dracula",
         colorscheme = "dracula"
-    }
     },
-})
+    {
+        name = "Nightfox",
+        colorscheme = "nightfox"
+    },
+    {
+        name = "Dayfox",
+        colorscheme = "dayfox",
+    },
+    {
+        name = "Duskfox",
+        colorscheme = "duskfox",
+    },
+    {
+        name = "Terafox",
+        colorscheme = "terafox",
+    }
+},})
