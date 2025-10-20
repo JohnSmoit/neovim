@@ -9,5 +9,5 @@ require("presence").setup({
     plugin_manager_text = "Mismanaging plugins",
     reading_text = "Accidently opened %s in readonly mode",
     workspace_text = "\"Working\" on %s",
-    line_number_text = "Line %s out of %s204596556092"
+    line_number_text = "Line %s out of %s"..math.random(1000000, 10000000000),
 })

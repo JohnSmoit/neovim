@@ -8,7 +8,7 @@ require("mason-lspconfig").setup {
         "lua_ls",
         "ols",
         "clangd",
-        "zls",
+        "zls@0.14",
         "glsl_analyzer",
         "rust_analyzer",
     },
