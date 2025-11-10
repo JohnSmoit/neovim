@@ -20,29 +20,7 @@ local lsp_group = vim.api.nvim_create_augroup("lumpy_space_princess", {})
 -- Enabling specific lsp features based on client/server support
 vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_group,
-    callback = function(args)
-        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
-
-        -- Note: This sucks
-        -- if client:supports_method('textDocument/completion') then
-        --     local chars = {}
-        --     for i = 32, 126 do table.insert(chars, string.char(i)) end
-
-        --     client.server_capabilities.completionProvider.triggerCharacters = chars
-        --     vim.lsp.completion.enable(true, client.id, args.buf)
-        -- end
-
-        if client:supports_method("textDocument/formatting") then
-            -- vim.api.nvim_create_autocmd("BufWritePre", {
-            --     group = vim.api.nvim_create_augroup("my.lsp", { clear = false }),
-            --     buffer = args.buf,
-            --     callback = function()
-            --         vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1500 })
-            --     end
-            -- })
-        end
-
-        -- other keymaps
+    callback = function()
         vim.keymap.set("n", "<leader>gd", function()
             vim.lsp.buf.definition({ reuse_win = true, loclist = true })
         end)
@@ -62,6 +40,8 @@ vim.keymap.set('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<CR>')
 
 vim.keymap.set('n', '<leader>sad', ':Telescope diagnostics<CR>')
 vim.keymap.set('n', '<leader>ssd', ':Telescope diagnostics bufnr=0<CR>')
+
+-- expand diagnostic detail
 vim.keymap.set('n', '<leader>sd', function()
     vim.diagnostic.open_float({
         header = "Oopsies Detected"
