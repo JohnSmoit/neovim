@@ -20,9 +20,9 @@ vim.keymap.set("n", "<leader>mf", function()
     harpoon:list():add()
 end)
 
-vim.keymap.set("n", "<C-B>l", function() harpoon:list():prev() end,
+vim.keymap.set("n", "<C-H>", function() harpoon:list():prev() end,
     { desc = "Cycle to previous marked file" })
-vim.keymap.set("n", "<C-B>n", function() harpoon:list():next() end,
+vim.keymap.set("n", "<C-L>", function() harpoon:list():next() end,
     { desc = "Cycle to next marked file" })
 
 
