@@ -1,14 +1,12 @@
 require("mason").setup()
 require("mason-lspconfig").setup {
     ensure_installed = {
-        "hls",
         "astro",
         "lemminx",
         "fsautocomplete",
         "lua_ls",
         "ols",
         "clangd",
-        "zls@0.14",
         "glsl_analyzer",
         "rust_analyzer",
     },
@@ -20,7 +18,10 @@ local lsp_group = vim.api.nvim_create_augroup("lumpy_space_princess", {})
 -- Enabling specific lsp features based on client/server support
 vim.api.nvim_create_autocmd("LspAttach", {
     group = lsp_group,
-    callback = function()
+    callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+
+        -- other keymaps
         vim.keymap.set("n", "<leader>gd", function()
             vim.lsp.buf.definition({ reuse_win = true, loclist = true })
         end)
@@ -97,9 +98,11 @@ vim.lsp.enable("fsautocomplete")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("ols")
 vim.lsp.enable("clangd")
-vim.lsp.enable("zls")
 vim.lsp.enable("glsl_analyzer")
 vim.lsp.enable("lemminx")
 vim.lsp.enable("astro")
 vim.lsp.enable("hls")
+vim.lsp.enable("zls")
 vim.lsp.enable("rust_analyzer")
+
+
