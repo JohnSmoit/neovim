@@ -92,6 +92,13 @@ vim.lsp.config("*", {
 })
 
 
+
+vim.lsp.config("gdscript", {
+    filetypes = { "gdscript" },
+    root_markers = { ".godot" },
+})
+
+vim.lsp.enable("gdscript")
 -- specific configurations for language servers
 
 vim.lsp.enable("fsautocomplete")
