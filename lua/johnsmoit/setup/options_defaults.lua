@@ -12,17 +12,13 @@ vim.opt.termguicolors = true
 
 vim.lsp.inlay_hint.enable(true);
 
--- TODO: Make lsp feature setting better
-vim.api.nvim_create_user_command("LspEnable", function(props)
-    if props.fargs[1] == "on" then
-        vim.lsp.inlay_hint.enable(true);
-    else
-        vim.lsp.inlay_hint.enable(false);
-    end
+vim.api.nvim_create_user_command("TabWidth", function(props)
+    vim.cmd.set('tabstop='..props.fargs[1])
+    vim.cmd.set('shiftwidth='..props.fargs[1])
 end, {
-        nargs = 1
+    nargs = 1
 })
-
+    vim.cmd.set('expandtab')
 local function makeHandler(val, number)
 	local formatted = string.format('%s=%d', val, number)
 	return function()

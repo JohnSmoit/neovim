@@ -91,25 +91,41 @@ vim.lsp.config("*", {
     root_markers = { ".git" },
 })
 
-
-
 vim.lsp.config("gdscript", {
     filetypes = { "gdscript" },
     root_markers = { ".godot" },
 })
 
 vim.lsp.enable("gdscript")
--- specific configurations for language servers
+-- specific configurations for language serverstart
+vim.api.nvim_create_user_command("LspDisable", function(props)
+    local name = props.fargs[1]
+    vim.lsp.enable(name, false)
+    vim.fn.execute("LspStop "..name)
+    vim.fn.execute("w")
+    vim.fn.execute("e")
+end, {
+        nargs = 1,
+})
 
-vim.lsp.enable("fsautocomplete")
-vim.lsp.enable("lua_ls")
-vim.lsp.enable("ols")
-vim.lsp.enable("clangd")
-vim.lsp.enable("glsl_analyzer")
-vim.lsp.enable("lemminx")
-vim.lsp.enable("astro")
-vim.lsp.enable("hls")
-vim.lsp.enable("zls")
-vim.lsp.enable("rust_analyzer")
+-- TODO: Make lsp feature setting better
+vim.api.nvim_create_user_command("LspEnable", function(props)
+    local name = props.fargs[1]
+    vim.lsp.enable(name, true)
 
+    vim.fn.execute("w")
+    vim.fn.execute("e")
+end, {
+        nargs = 1
+})
 
+vim.lsp.enable("fsautocomplete", false)
+vim.lsp.enable("lua_ls", false)
+vim.lsp.enable("ols", false)
+vim.lsp.enable("clangd", false)
+vim.lsp.enable("glsl_analyzer", false)
+vim.lsp.enable("lemminx", false)
+vim.lsp.enable("astro", false)
+vim.lsp.enable("hls", false)
+vim.lsp.enable("zls", false)
+vim.lsp.enable("rust_analyzer", false)
