@@ -1,8 +1,6 @@
 -- leader key (Yes I'm a space user)
 vim.g.mapleader = ' '
 
--- the essentials:
-
 -- some nice toggles
 local wo = vim.wo
 vim.keymap.set('n', '<leader>tl', function()
