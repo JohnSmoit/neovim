@@ -2,7 +2,6 @@
 vim.g.mapleader = ' '
 
 -- the essentials:
-vim.keymap.set('n', '<C-s>', vim.cmd.w)
 
 -- some nice toggles
 local wo = vim.wo
