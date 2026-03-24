@@ -30,3 +30,13 @@ require"nvim-treesitter.configs".setup {
     }
 
 }
+
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+callback = function()
+  require('nvim-treesitter.parsers').c3 = {
+    install_info = {
+      url = 'https://github.com/c3lang/tree-sitter-c3',
+      revision = "3bcb189c85a15d5e47a12947fbb25cd6604025f5", -- commit hash for revision to check out; HEAD if missing
+    },
+  }
+end})
