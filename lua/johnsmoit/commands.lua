@@ -13,3 +13,13 @@ end, {
         desc = "Changes the working directory to the provided directory (or the directory of the active buffer if none is specified)",
         nargs = "?"
     })
+
+-- too lazy to set this up zzzzzzzz.
+-- local builtin = require('telescope.builtin')
+--
+-- vim.keymap.set('n', '<leader>rg', function()
+--     local results = builtin.grep_string{search = vim.fn.input('Enter search string: ')}
+--     print(vim.inspect(results))
+-- end, {
+--     desc = "Find and replace for all files in a project folder I guess", 
+-- })

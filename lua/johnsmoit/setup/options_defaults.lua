@@ -7,7 +7,6 @@ vim.cmd.set('tabstop=4')
 vim.cmd.set('shiftwidth=4')
 
 vim.cmd.set('expandtab')
-vim.cmd.set('iskeyword-=_')
 
 vim.opt.termguicolors = true
 
@@ -19,7 +18,7 @@ vim.api.nvim_create_user_command("TabWidth", function(props)
 end, {
     nargs = 1
 })
-    vim.cmd.set('expandtab')
+
 local function makeHandler(val, number)
 	local formatted = string.format('%s=%d', val, number)
 	return function()
