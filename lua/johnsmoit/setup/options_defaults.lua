@@ -5,6 +5,7 @@ vim.wo.relativenumber = true
 
 vim.cmd.set('tabstop=4')
 vim.cmd.set('shiftwidth=4')
+vim.cmd.set('virtualedit=block')
 
 vim.cmd.set('expandtab')
 

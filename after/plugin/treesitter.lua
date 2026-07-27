@@ -31,3 +31,20 @@ require"nvim-treesitter.configs".setup {
     -- }
 
 }
+
+vim.filetype.add({
+    extension = {
+        hlsl = 'hlsl'
+    }
+})
+
+vim.treesitter.language.register('c3', { 'c3' })
+vim.api.nvim_create_autocmd('User', { pattern = 'TSUpdate',
+callback = function()
+  require('nvim-treesitter.parsers').c3 = {
+    install_info = {
+      url = 'https://github.com/c3lang/tree-sitter-c3',
+      revision = '1c6a95234c62130763ed1c479f958b74fdbfdb2a'
+    },
+  }
+end})

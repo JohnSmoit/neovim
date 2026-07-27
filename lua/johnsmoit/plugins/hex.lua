@@ -1,1 +1,1 @@
-{ 'RaafatTurki/hex.nvim' }
+return { 'RaafatTurki/hex.nvim' }
