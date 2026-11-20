@@ -119,6 +119,7 @@ end, {
         nargs = 1
 })
 
+vim.lsp.enable("harper_ls", false)
 vim.lsp.enable("fsautocomplete", false)
 vim.lsp.enable("lua_ls", false)
 vim.lsp.enable("ols", false)
@@ -128,4 +129,5 @@ vim.lsp.enable("lemminx", false)
 vim.lsp.enable("astro", false)
 vim.lsp.enable("hls", false)
 vim.lsp.enable("zls", false)
+vim.lsp.enable("tinymist", false)
 vim.lsp.enable("rust_analyzer", false)
